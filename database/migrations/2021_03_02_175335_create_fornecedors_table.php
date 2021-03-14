@@ -15,7 +15,9 @@ class CreateFornecedorsTable extends Migration
     {
         Schema::create('fornecedors', function (Blueprint $table) {
             $table->id('FOR_CODIGO');
-            $table->string('FOR_NOME', 250)->nullable();
+            $table->string('FOR_NOME', 250);
+            $table->string('updated_at');
+            $table->string('created_at');
         });
     }
 

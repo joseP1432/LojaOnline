@@ -15,12 +15,14 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id('PRO_CODIGO');
-            $table->string('PRO_NOME', 75)->nullable();
-            $table->string('PRO_DESCRICAO', 250)->nullable();
-            $table->integer('PRO_PRECOCOMPRA')->nullable();
-            $table->integer('PRO_PRECOVENDA')->nullable();
-            $table->integer('PRO_QUANTIDADE')->nullable();
-            $table->integer('PRO_FOR_CODIGO')->nullable();
+            $table->string('PRO_NOME', 75);
+            $table->string('PRO_DESCRICAO', 250);
+            $table->integer('PRO_PRECOCOMPRA');
+            $table->integer('PRO_PRECOVENDA');
+            $table->integer('PRO_QUANTIDADE');
+            $table->integer('PRO_FOR_CODIGO');
+            $table->string('updated_at');
+            $table->string('created_at');
         });
     }
 

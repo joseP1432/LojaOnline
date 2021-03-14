@@ -15,8 +15,10 @@ class CreateUsuariosTable extends Migration
     {
         Schema::create('usuarios', function (Blueprint $table) {
             $table->id('USU_CODIGO');
-            $table->string('USU_EMAIL', 45)->nullable();
-            $table->string('USU_SENHA', 12)->nullable();
+            $table->string('USU_EMAIL', 45);
+            $table->string('USU_SENHA', 12);
+            $table->string('updated_at');
+            $table->string('created_at');
         });
     }
 
