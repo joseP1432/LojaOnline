@@ -22,6 +22,8 @@ class FornecedorFactory extends Factory
     public function definition()
     {
         return [
+
+            'FOR_NOME' => $this->realText(20),
             //
         ];
     }

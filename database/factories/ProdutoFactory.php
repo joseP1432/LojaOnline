@@ -22,7 +22,13 @@ class ProdutoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'PRO_NOME' => $this->realText(20),
+            'PRO_DESCRICAO' => $this->realText(60),
+            'PRO_PRECOCOMPRA' => 8,
+            'PRO_PRECOVENDA' => 16,
+            'PRO_QUANTIDADE' => 5,
+            'PRO_FOR_CODIGO' => 1,
+
         ];
     }
 }

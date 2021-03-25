@@ -22,6 +22,8 @@ class VendaFactory extends Factory
     public function definition()
     {
         return [
+            'VEN_QUANTIDADE' => 4,
+            'VEN_PRO_CODIGO' => 1,
             //
         ];
     }

@@ -24,7 +24,31 @@ class VendasController extends Controller
 		return view('cad-venda');
 	}
 
-	public function editvenda(){
-		return view('edit-venda');
+	public function showvendas($id){
+		$venda = \App\Models\Venda::findOrFail($id);
+		return view('showvendas', ['vendas' => $venda]);
+	}
+
+
+	public function editvenda($id){
+		$venda = \App\Models\Venda::findOrFail($id);
+		return view('edit-venda', ['vendas' => $venda]);
+	}
+
+	public function atualizar(Request $request, $id){
+		$venda = \App\Models\Venda::findOrFail($id);
+		$venda->update([
+			'VEN_QUANTIDADE' => $request->qntd,
+			'VEN_PRO_CODIGO' => $request->prod,
+		]);
+		$ven = \App\Models\Venda::get();
+		$prod = \App\Models\Produto::get();
+		return redirect()->route('venda');
+	}
+
+		public function destroy($id){
+		$venda = \App\Models\Venda::findOrFail($id);
+		$venda->delete();
+		return redirect()->route('venda');
 	}
 }

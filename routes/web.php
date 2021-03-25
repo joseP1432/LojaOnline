@@ -14,28 +14,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/index', 'App\Http\Controllers\LojaController@index')->name('index');
-Route::get('/login', 'App\Http\Controllers\LojaController@login')->name('login');
+require __DIR__.'/auth.php';
 
-Route::get('/vendas', 'App\Http\Controllers\VendasController@vendas')->name('venda');
-Route::get('/vendas/cadastrar', 'App\Http\Controllers\VendasController@cadvenda')->name('cad-venda');
-Route::post('/vendas/cadastrar', 'App\Http\Controllers\VendasController@storevenda')->name('store-venda');
-Route::get('/vendas/editar', 'App\Http\Controllers\VendasController@editvenda')->name('edit-venda');
+Route::get('/', 'App\Http\Controllers\LojaController@index')->middleware(['auth'])->name('dashboard');
 
-Route::get('/fornecedores', 'App\Http\Controllers\FornecedoresController@fornecedores')->name('fornecedor');
-Route::get('/fornecedores/cadastrar', 'App\Http\Controllers\FornecedoresController@cadfornecedor')->name('cad-fornecedor');
-Route::post('/fornecedores/cadastrar', 'App\Http\Controllers\FornecedoresController@storefornecedor')->name('store-fornecedor');
-Route::get('/fornecedores/editar', 'App\Http\Controllers\FornecedoresController@editfornecedor')->name('edit-fornecedor');
+Route::get('/vendas', 'App\Http\Controllers\VendasController@vendas')->middleware(['auth'])->name('venda');
+Route::get('/vendas/cadastrar', 'App\Http\Controllers\VendasController@cadvenda')->middleware(['auth'])->name('cad-venda');
+Route::post('/vendas/cadastrar', 'App\Http\Controllers\VendasController@storevenda')->middleware(['auth'])->name('store-venda');
+Route::get('/vendas/ver/{id}', 'App\Http\Controllers\VendasController@showvendas')->middleware(['auth'])->name('showvendas');
+Route::get('/vendas/ver/{id}', 'App\Http\Controllers\VendasController@showvendas')->middleware(['auth'])->name('showvendas');
+Route::get('/vendas/editar/{id}', 'App\Http\Controllers\VendasController@editvenda')->middleware(['auth'])->name('edit-venda');
+Route::post('/vendas/editar/{id}', 'App\Http\Controllers\VendasController@atualizar')->middleware(['auth'])->name('update-venda');
+Route::delete('/vendas/excluir/{id}', 'App\Http\Controllers\VendasController@destroy')->middleware(['auth'])->name('vendas.destroy');
 
-Route::get('/produtos', 'App\Http\Controllers\ProdutosController@produtos')->name('produto');
-Route::get('/produtos/cadastrar', 'App\Http\Controllers\ProdutosController@cadproduto')->name('cad-produto');
-Route::post('/produtos/cadastrar', 'App\Http\Controllers\ProdutosController@storeproduto')->name('store-produto');
-Route::get('/produtos/editar', 'App\Http\Controllers\ProdutosController@editproduto')->name('edit-produto');
 
-Route::get('/usuarios', 'App\Http\Controllers\UsuariosController@usuarios')->name('usuario');
-Route::get('/usuarios/cadastrar', 'App\Http\Controllers\UsuariosController@cadusuario')->name('cad-usuario');
-Route::post('/usuarios/cadastrar', 'App\Http\Controllers\UsuariosController@storeusuario')->name('store-usuario');
-Route::get('/usuarios/editar', 'App\Http\Controllers\UsuariosController@editusuario')->name('edit-usuario');
+Route::get('/fornecedores', 'App\Http\Controllers\FornecedoresController@fornecedores')->middleware(['auth'])->name('fornecedor');
+Route::get('/fornecedores/cadastrar', 'App\Http\Controllers\FornecedoresController@cadfornecedor')->middleware(['auth'])->name('cad-fornecedor');
+Route::get('/fornecedores/ver/{id}', 'App\Http\Controllers\FornecedoresController@showfornecedores')->middleware(['auth'])->name('showfornecedores');
+Route::post('/fornecedores/cadastrar', 'App\Http\Controllers\FornecedoresController@storefornecedor')->middleware(['auth'])->name('store-fornecedor');
+Route::get('/fornecedores/editar/{id}', 'App\Http\Controllers\FornecedoresController@editfornecedor')->middleware(['auth'])->name('edit-fornecedor');
+Route::post('/fornecedores/editar/{id}', 'App\Http\Controllers\FornecedoresController@atualizar')->middleware(['auth'])->name('update-fornecedor');
+Route::delete('/fornecedores/excluir/{id}', 'App\Http\Controllers\FornecedoresController@destroy')->middleware(['auth'])->name('fornecedores.destroy');
+
+Route::get('/produtos', 'App\Http\Controllers\ProdutosController@produtos')->middleware(['auth'])->name('produto');
+Route::get('/produtos/cadastrar', 'App\Http\Controllers\ProdutosController@cadproduto')->middleware(['auth'])->name('cad-produto');
+Route::post('/produtos/cadastrar', 'App\Http\Controllers\ProdutosController@storeproduto')->middleware(['auth'])->name('store-produto');
+Route::get('/produtos/ver/{id}', 'App\Http\Controllers\ProdutosController@showprodutos')->middleware(['auth'])->name('showprodutos');
+Route::get('/produtos/editar/{id}', 'App\Http\Controllers\ProdutosController@editproduto')->middleware(['auth'])->name('edit-produto');
+Route::post('/produtos/editar/{id}', 'App\Http\Controllers\ProdutosController@atualizar')->middleware(['auth'])->name('update-produto');
+Route::delete('/produtos/excluir/{id}', 'App\Http\Controllers\ProdutosController@destroy')->middleware(['auth'])->name('produtos.destroy');
+
+Route::get('/usuarios', 'App\Http\Controllers\UsuariosController@usuarios')->middleware(['auth'])->name('usuario');
+Route::get('/usuarios/cadastrar', 'App\Http\Controllers\UsuariosController@cadusuario')->middleware(['auth'])->name('cad-usuario');
+Route::post('/usuarios/cadastrar', 'App\Http\Controllers\UsuariosController@storeusuario')->middleware(['auth'])->name('store-usuario');
