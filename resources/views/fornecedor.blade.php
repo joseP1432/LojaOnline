@@ -94,7 +94,6 @@
                   <p class="card-category"> Veja, apague ou edite seus fornecedores</p>
                 </div>
                 <div class="card-body">
-
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">

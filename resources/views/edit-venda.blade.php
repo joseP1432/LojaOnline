@@ -58,9 +58,9 @@
               <i class="material-icons">shopping_bag</i>
             </a>
           </li>
-            <form method="POST" action="{{ route('logout') }}" id="form-sair">
-              @csrf
-            </form>
+          <form method="POST" action="{{ route('logout') }}" id="form-sair">
+            @csrf
+          </form>
           <!-- your sidebar here -->
         </ul>
       </div>
@@ -91,25 +91,29 @@
                   <p class="card-category">Preencha corretamente:</p>
                 </div>
                 <div class="card-body">
-                  <form action="{{route('update-produto', ['id' => $produtos->id])}}" method="POST">
+                  <form action="{{route('update-venda', ['id' => $vendas->id])}}" method="POST">
                    @csrf
                    <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Quantidade</label>
                         <input class="form-control" type="text" name="qntd" required id="qntd" value="{{$vendas->VEN_QUANTIDADE}}">
                       </div>
                     </div>
-
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="bmd-label-floating">Produto</label>
                         <input type="text" class="form-control" name="prod" required id="prod" value="{{$vendas->VEN_PRO_CODIGO}}">
                       </div>
+                    </div> 
+                    <div class="col-md-4 mt-4">
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-info pull-right">Salvar alterações</button>
+                        <div class="clearfix"></div>                        
+                      </div>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-info pull-right">Salvar alterações</button>
-                  <div class="clearfix"></div>
+
                 </form>
               </div>
             </div>

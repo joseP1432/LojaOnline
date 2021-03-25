@@ -94,100 +94,98 @@
                   <form action="{{route('store-produto')}}" method="POST">
                    @csrf
                    <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                       <div class="form-group">
                         <label class="bmd-label-floating">Nome</label>
                         <input class="form-control" type="text" name="nome" id="nome" value="{{@$pro->PRO_NOME}}">
                       </div>
                     </div>
-                    
 
-                    
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="bmd-label-floating">Fornecedor</label>
                         <input type="text" class="form-control" name="for" id="for" value="{{@$pro->PRO_FOR_CODIGO}}">
                       </div>
                     </div>
-                    
-                    
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Preço de Compra</label>
-                          <input class="form-control"  type="text" name="pcompra" id="pcompra" value="{{@$pro->PRO_PRECOCOMPRA}}">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Preço de Venda</label>
-                          <input class="form-control" type="text" name="pvenda" id="pvenda" value="{{@$pro->PRO_PRECOVENDA}}" >
-                        </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Preço de Compra</label>
+                        <input class="form-control"  type="text" name="pcompra" id="pcompra" value="{{@$pro->PRO_PRECOCOMPRA}}">
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Quantidade</label>
-                          <input  class="form-control" type="text" name="qntd" id="qntd" value="{{@$pro->PRO_QUANTIDADE}}">
-                        </div>
-                      </div>
-                      <div class="col-md-8">
-                        <div class="form-group">
-                          <label class="bmd-label-floating">Descrição</label>
-                          <input class="form-control" type="text" name="desc" id="desc" value="{{@$pro->PRO_DESCRICAO}}">
-                        </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Preço de Venda</label>
+                        <input class="form-control" type="text" name="pvenda" id="pvenda" value="{{@$pro->PRO_PRECOVENDA}}" >
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-info pull-right">Salvar alterações</button>
-                    <div class="clearfix"></div>
-                  </form>
-                </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Quantidade</label>
+                        <input  class="form-control" type="text" name="qntd" id="qntd" value="{{@$pro->PRO_QUANTIDADE}}">
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Descrição</label>
+                        <input class="form-control" type="text" name="desc" id="desc" value="{{@$pro->PRO_DESCRICAO}}">
+                      </div>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                      <button type="submit" class="btn btn-info pull-right">Salvar alterações</button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-          </div>          
-        </div>
-      </div>
-      <!-- Final da página-->
-      <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Loja Online
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, Criado por <i class="material-icons">favorite</i> 
-            <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
           </div>
-          <!-- your footer here -->
-        </div>
-      </footer>
+        </div>          
+      </div>
     </div>
+    <!-- Final da página-->
+    <footer class="footer">
+      <div class="container-fluid">
+        <nav class="float-left">
+          <ul>
+            <li>
+              <a href="#">
+                Loja Online
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright float-right">
+          &copy;
+          <script>
+            document.write(new Date().getFullYear())
+          </script>, Criado por <i class="material-icons">favorite</i> 
+          <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
+        </div>
+        <!-- your footer here -->
+      </div>
+    </footer>
   </div>
+</div>
 
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!-- Forms Validations Plugin -->
-  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
-  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+<!--   Core JS Files   -->
+<script src="../assets/js/core/jquery.min.js"></script>
+<script src="../assets/js/core/popper.min.js"></script>
+<script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+<script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+<!-- Forms Validations Plugin -->
+<script src="../assets/js/plugins/jquery.validate.min.js"></script>
+<!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+<script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+<!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+<script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+<script src="../assets/js/plugins/nouislider.min.js"></script>
+<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
 </body>
 
 </html>

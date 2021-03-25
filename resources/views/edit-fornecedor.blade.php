@@ -98,8 +98,13 @@
 														<input  class="form-control" type="text" name="nome" id="nome"value="{{$fornecedores->FOR_NOME}}">
 													</div>
 												</div> 
-												<button type="submit" class="btn btn-primary pull-right">Salvar</button>
-												<div class="clearfix"></div> 
+												<div class="col-md-6 mt-4">
+													<div class="form-group">
+														<button type="submit" class="btn btn-primary pull-right">Salvar</button>
+														<div class="clearfix"></div> 
+													</div>
+												</div>
+												
 											</div>          
 										</form>
 									</div>

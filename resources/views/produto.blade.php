@@ -85,7 +85,7 @@
         <div class="container-fluid">
           <div class="row">
             <button type="button"  class="btn btn-info btn-lg btn-block">
-              <span class="material-icons">add</span> <a href="{{route('cad-fornecedor')}}"> Adicionar produtos <span class="material-icons">add</span></a>
+              <span class="material-icons">add</span> <a href="{{route('cad-produto')}}"> Adicionar produtos <span class="material-icons">add</span></a>
             </button>
             <div class="col-md-12">
               <div class="card">
@@ -116,6 +116,9 @@
                         <th class="text-center">
                           Fornecedor
                         </th>
+                        <th class="text-center">
+                          Ações
+                        </th>
                       </thead>
                       @foreach ($pro as $produto)
                       <tbody>
@@ -126,7 +129,7 @@
                           <td>{{$produto->PRO_PRECOVENDA}}</td>
                           <td>{{$produto->PRO_QUANTIDADE}}</td>
                           <td>{{$produto->PRO_FOR_CODIGO}}</td>
-                          <td class="text-center"> <a href="{{route('edit-produto', ['id' => $produto->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a>|
+                          <td class="text-center"> <a href="{{route('edit-produto', ['id' => $produto->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a> |
                             <a href="{{route('showprodutos', ['id' => $produto->id])}}" class="btn btn-sm btn-danger rounded"><span class="material-icons" class="text-danger">delete_sweep</span></a>
                           </td>
                         </tr>
