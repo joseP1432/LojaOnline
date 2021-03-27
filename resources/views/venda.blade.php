@@ -83,9 +83,9 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <button type="button"  class="btn btn-info btn-lg btn-block">
-              <span class="material-icons">add</span><a href="{{route('cad-venda')}}">adicionar uma nova venda<span class="material-icons">add</span></a>
-            </button>
+            <a href="{{route('cad-venda')}}" class="btn btn-info btn-lg btn-block">
+              <span class="material-icons">add</span> Adicionar uma nova venda <span class="material-icons">add</span>
+            </a>
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
@@ -96,33 +96,57 @@
                 	
                   <div class="table-responsive">
                     <table class="table">
-                      <thead class=" text-primary">
-                       <th>
+                      <thead class="text-primary" width="10%">
+                       <th class="text-center" width="10%">
                         Produto
                       </th>
-                      <th>
+                      <th class="text-center" width="10%">
+                        Cliente
+                      </th>
+                      <th class="text-center" width="10%">
                         Quantidade
                       </th>
-                      <th class="text-center">
-                        ação
+                      <th class="text-center" width="20%">
+                        Total
+                      </th>
+                      <th class="text-center" width="10%">
+                        Ação
                       </th>
                     </thead>
-                    @foreach ($ven as $venda)
+                    @foreach ($vendas as $venda)
+                    @foreach ($prod as $produto)
+                    @if($venda->VEN_PRO_CODIGO == $produto->id)
                     <tbody>
                       <tr>
-                        <td>
-                          {{$venda->VEN_PRO_CODIGO}}
+                        <td class="text-center">
+                          {{$produto->PRO_NOME}}
                         </td>
-                        <td>
+                        <td class="text-center">
+                          {{$venda->VEN_CLIENTE}}
+                        </td>
+                        <td class="text-center">
                           {{$venda->VEN_QUANTIDADE}}
                         </td>
                         <td class="text-center">
-                          <a href="{{route('edit-venda', ['id' => $venda->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a>|
-                          <a href="{{route('showvendas', ['id' => $venda->id])}}" class="btn btn-sm btn-danger rounded"><span class="material-icons" class="text-danger">delete_sweep</span></a>
+                          @if ($venda->VEN_STATUS == "Pago")
+                          {{$venda->VEN_QUANTIDADE*$produto->PRO_PRECOVENDA}}
+                          @elseif ($venda->VEN_STATUS == "Não Pago")
+                          Não pago
+                          @endif
+                        </td>
+                        <td class="text-center">
+                          <a href="{{route('edit-venda', ['id' => $venda->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a>
+                          <form action="{{route('vendas.destroy', [$venda->id])}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger rounded"><span class="material-icons" class="text-danger">delete_sweep</span>
+                          </form>
                           
                         </td>
                       </tr>
                     </tbody>
+                    @endif
+                    @endforeach
                     @endforeach
                   </table>
                 </div>

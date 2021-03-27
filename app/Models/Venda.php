@@ -4,9 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Produto;
 
 class Venda extends Model
 {
     use HasFactory;
-    protected $fillable = ['VEN_CODIGO','VEN_QUANTIDADE', 'VEN_PRO_CODIGO'];
+
+    protected $table = 'vendas';
+    protected $fillable = ['VEN_QUANTIDADE','VEN_DATA', 'VEN_CLIENTE', 'VEN_STATUS','VEN_PRO_CODIGO'];
+
+    public function produto(){
+    	return $this->belongsTo(Produto::class);
+
+    }
 }
+
+  

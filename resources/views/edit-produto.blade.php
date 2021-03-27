@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -93,21 +92,41 @@
                   <form action="{{route('update-produto', ['id' => $produtos->id])}}" method="POST">
                    @csrf
                    <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Nome</label>
                         <input class="form-control" type="text" name="nome" id="nome" value="{{$produtos->PRO_NOME}}">
                       </div>
                     </div>
                     
-                    <div class="col-md-6">
-                      <div class="form-group">
+                    <div class="col-md-4">
+                      <div class="form-group"> 
                         <label class="bmd-label-floating">Fornecedor</label>
-                        <input type="text" class="form-control" name="for" id="for" value="{{$produtos->PRO_FOR_CODIGO}}">
+                        <select name="for" class="form-control" required id="for">
+                          @foreach ($fornecedor as $for)
+                          <option value="{{$for->id}}"
+                            <?php 
+                            if($for->id==$produtos->PRO_FOR_CODIGO){
+                              echo "selected='selected'";
+                            }
+                            ?>>
+                            {{$for->FOR_NOME}}
+                          </option>
+                          @endforeach
+                        </select>
+                      </div> 
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label>Status</label>
+                        <select name="status"  class="form-control" required id="status">
+                          <option  {{$produtos->PRO_STATUS == "Bombando" ? 'selected': ''}} value="Bombando">Bombando</option>  
+                          <option  {{$produtos->PRO_STATUS == "Estável" ? 'selected': ''}} value="Estável">Estável</option> 
+                          <option  {{$produtos->PRO_STATUS == "Fraco" ? 'selected': ''}} value="Fraco">Fraco</option>       
+                        </select>
                       </div>
                     </div>
                   </div>
-
                   <div class="row">
                     <div class="col-md-4">
                       <div class="form-group">
@@ -129,7 +148,6 @@
                     </div>
                   </div>
                   <div class="row">
-
                     <div class="col-md-8">
                       <div class="form-group">
                         <label class="bmd-label-floating">Descrição</label>
@@ -143,7 +161,6 @@
                       </div>
                     </div>
                   </div>
-
                 </form>
               </div>
             </div>

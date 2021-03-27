@@ -15,10 +15,13 @@ class CreateVendasTable extends Migration
     {
         Schema::create('vendas', function (Blueprint $table) {
             $table->id();
+            $table->string('VEN_CLIENTE', 250);
+            $table->string('VEN_STATUS', 250);
+            $table->date('VEN_DATA');
             $table->integer('VEN_QUANTIDADE');
-            $table->integer('VEN_PRO_CODIGO');
-            $table->string('updated_at');
-            $table->string('created_at');
+            $table->UnsignedBigInteger('VEN_PRO_CODIGO');
+            $table->foreign('VEN_PRO_CODIGO')->references('id')->on('Produtos');
+            $table->timestamps();
         });
     }
 

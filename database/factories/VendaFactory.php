@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Venda;
+use App\Models\Produto;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class VendaFactory extends Factory
@@ -22,8 +23,8 @@ class VendaFactory extends Factory
     public function definition()
     {
         return [
-            'VEN_QUANTIDADE' => 4,
-            'VEN_PRO_CODIGO' => 1,
+            'VEN_QUANTIDADE' => $this->faker->realText(10),
+            'VEN_PRO_CODIGO' => Produto::inRandomOrder()->first()->id,
             //
         ];
     }

@@ -21,7 +21,7 @@
   <div class="wrapper ">
     <div class="sidebar" data-color="purple" data-background-color="white">
       <div class="logo">
-        <a href="index.html" class="simple-text logo-mini">
+        <a href="{{route('dashboard')}}" class="simple-text logo-mini">
           LOJA ONLINE
         </a>
       </div>
@@ -94,50 +94,79 @@
                 <form action="{{route('store-venda')}}" method="POST">
                  @csrf
                  <div class="row">
-                  <div class="col-md-4">
+                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">Produto</label>
-                      <input  class="form-control" type="text" name="prod" id="prod" value="{{@$ven->VEN_PRO_CODIGO}}">
+                      <select name="prod" class="form-control" aria-label=".form-select-sm exmple">
+                        <option selected>Selecione o produto</option>
+                        @foreach($produto as $prod)
+                        <option value="{{$prod->id}}">{{$prod->PRO_NOME}}</option>
+                        @endforeach
+                      </select>
                     </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-2">
                     <div class="form-group">
                       <label class="bmd-label-floating">Quantidade</label>
                       <input  class="form-control" type="text" name="qntd" id="qntd" value="{{@$ven->VEN_QUANTIDADE}}">
                     </div>
                   </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Data</label>
+                      <input  class="form-control" type="date" name="data" id="data" value="{{@$ven->VEN_DATA}}">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Cliente</label>
+                      <input  class="form-control" type="text" name="cliente" id="cliente" value="{{@$ven->VEN_CLIENTE}}">
+                    </div>
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-primary pull-right">Salvar</button>
-                <div class="clearfix"></div>
-              </form>
-            </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <label> Status </label>
+                    <select name="status" id="status" class="form-control" aria-label=".form-select-sm example">
+                      <option selected>Selecione o status de pagamento</option>
+                      <option value="Pago">Pago</option>
+                      <option value="Não Pago">Não Pago</option>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+              <div class="clearfix"></div>
+            </form>
           </div>
         </div>
-      </div>          
-    </div>
-  </div>
-  <!-- Final da página-->
-  <footer class="footer">
-    <div class="container-fluid">
-      <nav class="float-left">
-        <ul>
-          <li>
-            <a href="#">
-              Loja Online
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div class="copyright float-right">
-        &copy;
-        <script>
-          document.write(new Date().getFullYear())
-        </script>, Criado por <i class="material-icons">favorite</i> 
-        <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
       </div>
-      <!-- your footer here -->
+    </div>          
+  </div>
+</div>
+<!-- Final da página-->
+<footer class="footer">
+  <div class="container-fluid">
+    <nav class="float-left">
+      <ul>
+        <li>
+          <a href="#">
+            Loja Online
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright float-right">
+      &copy;
+      <script>
+        document.write(new Date().getFullYear())
+      </script>, Criado por <i class="material-icons">favorite</i> 
+      <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
     </div>
-  </footer>
+    <!-- your footer here -->
+  </div>
+</footer>
 </div>
 </div>
 

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -100,50 +99,85 @@
                         <input class="form-control" type="text" name="qntd" required id="qntd" value="{{$vendas->VEN_QUANTIDADE}}">
                       </div>
                     </div>
-                    <div class="col-md-6">
+
+                    <div class="col-md-4">
                       <div class="form-group">
-                        <label class="bmd-label-floating">Produto</label>
-                        <input type="text" class="form-control" name="prod" required id="prod" value="{{$vendas->VEN_PRO_CODIGO}}">
+                        <label class="bmd-label-floating">Cliente</label>
+                        <input class="form-control" type="text" name="cliente" id="cliente" value="{{$vendas->VEN_CLIENTE}}">
                       </div>
-                    </div> 
-                    <div class="col-md-4 mt-4">
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Data</label>
+                        <input class="form-control" type="date" name="data" id="data" value="{{$vendas->VEN_DATA}}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 mt-2">
+                      <div class="form-group">
+                        <select name="status"  class="form-control" required id="status">
+                          <option  {{$vendas->VEN_STATUS == "Não pago" ? 'selected': ''}} value="Não pago">Não pago</option>  
+                          <option  {{$vendas->VEN_STATUS == "Pago" ? 'selected': ''}} value="Pago">Pago</option>      
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mt-2">
+                      <div class="form-group">  
+                        <select name="prod" class="form-control" required id="prod">
+                          @foreach ($produto as $prod)
+                          <option value="{{$prod->id}}"
+                            <?php 
+                            if($prod->id==$vendas->VEN_PRO_CODIGO){
+                              echo "selected='selected'";
+                            }
+                            ?>
+                            >
+                            {{$prod->PRO_NOME}}
+                          </option>
+                          @endforeach
+                        </select>
+                      </div> 
+                    </div>
+                    <div class="col-md-4 mt-2">
                       <div class="form-group">
                         <button type="submit" class="btn btn-info pull-right">Salvar alterações</button>
                         <div class="clearfix"></div>                        
                       </div>
                     </div>
                   </div>
-
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
-        </div>          
-      </div>
-    </div>
-    <!-- Final da página-->
-    <footer class="footer">
-      <div class="container-fluid">
-        <nav class="float-left">
-          <ul>
-            <li>
-              <a href="#">
-                Loja Online
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div class="copyright float-right">
-          &copy;
-          <script>
-            document.write(new Date().getFullYear())
-          </script>, Criado por <i class="material-icons">favorite</i> 
-          <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
         </div>
-        <!-- your footer here -->
-      </div>
-    </footer>
+      </div>          
+    </div>
   </div>
+  <!-- Final da página-->
+  <footer class="footer">
+    <div class="container-fluid">
+      <nav class="float-left">
+        <ul>
+          <li>
+            <a href="#">
+              Loja Online
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div class="copyright float-right">
+        &copy;
+        <script>
+          document.write(new Date().getFullYear())
+        </script>, Criado por <i class="material-icons">favorite</i> 
+        <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
+      </div>
+      <!-- your footer here -->
+    </div>
+  </footer>
+</div>
 </div>
 
 <!--   Core JS Files   -->

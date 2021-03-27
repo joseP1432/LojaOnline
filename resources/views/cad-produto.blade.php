@@ -104,21 +104,37 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="bmd-label-floating">Fornecedor</label>
-                        <input type="text" class="form-control" name="for" id="for" value="{{@$pro->PRO_FOR_CODIGO}}">
+                        <select name="for" id="for" class="form-control" aria-label=".form-select-sm exmple">
+                          <option selected>Selecione o fornecedor</option>
+                          @foreach($for as $fornecedor)
+                          <option value="{{$fornecedor->id}}">{{ $fornecedor->FOR_NOME }}</option>
+                          @endforeach
+                        </select>
                       </div>
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Preço de Compra</label>
                         <input class="form-control"  type="text" name="pcompra" id="pcompra" value="{{@$pro->PRO_PRECOCOMPRA}}">
                       </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Preço de Venda</label>
                         <input class="form-control" type="text" name="pvenda" id="pvenda" value="{{@$pro->PRO_PRECOVENDA}}" >
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">Status</label>
+                        <select name="status" class="form-control" aria-label=".form-select-sm exmple">
+                          <option selected>Selecione o status: </option>
+                          <option value="Bombando">Bombando</option>
+                          <option value="Fraco">Fraco</option>
+                          <option value="Estável">Estável</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -136,7 +152,7 @@
                       </div>
                     </div>
                     <div class="col-md-4 mt-4">
-                      <button type="submit" class="btn btn-info pull-right">Salvar alterações</button>
+                      <button type="submit" class="btn btn-info pull-right">Salvar</button>
                     </div>
                   </div>
                 </form>

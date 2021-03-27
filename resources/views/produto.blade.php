@@ -84,9 +84,9 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <button type="button"  class="btn btn-info btn-lg btn-block">
-              <span class="material-icons">add</span> <a href="{{route('cad-produto')}}"> Adicionar produtos <span class="material-icons">add</span></a>
-            </button>
+            <a href="{{route('cad-produto')}}" class="btn btn-info btn-lg btn-block">
+              <span class="material-icons">add</span>  Adicionar produtos <span class="material-icons">add</span>
+            </a>
             <div class="col-md-12">
               <div class="card">
                 <div class="card-header card-header-primary">
@@ -98,42 +98,54 @@
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
-                        <th>
+                        <th class="text-center" width="20%">
                           Nome
                         </th>
-                        <th class="text-center">
+                        <th class="text-center" width="40%">
                           Descrição
                         </th>
-                        <th class="text-center">
-                          Preço de Compra
-                        </th>
-                        <th class="text-center">
-                          Preço de Venda
-                        </th>
-                        <th class="text-center">
-                          Quantidade
-                        </th>
-                        <th class="text-center">
+                        <th class="text-center" width="10%">
                           Fornecedor
                         </th>
-                        <th class="text-center">
+                        <th class="text-center" width="10%">
+                          Preço de Compra
+                        </th>
+                        <th class="text-center" width="10%">
+                          Preço de Venda
+                        </th>
+                        <th class="text-center" width="10%">
+                          Status
+                        </th>
+                        <th class="text-center" width="10%">
+                          Quantidade
+                        </th>
+                        <th class="text-center" width="10%">
                           Ações
                         </th>
                       </thead>
                       @foreach ($pro as $produto)
+                      @foreach ($for as $fornecedor)
+                      @if ($produto->PRO_FOR_CODIGO == $fornecedor->id)
                       <tbody>
                         <tr>
-                          <td>{{$produto->PRO_NOME}}</td>
-                          <td>{{$produto->PRO_DESCRICAO}}</td>
-                          <td>{{$produto->PRO_PRECOCOMPRA}}</td>
-                          <td>{{$produto->PRO_PRECOVENDA}}</td>
-                          <td>{{$produto->PRO_QUANTIDADE}}</td>
-                          <td>{{$produto->PRO_FOR_CODIGO}}</td>
-                          <td class="text-center"> <a href="{{route('edit-produto', ['id' => $produto->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a> |
-                            <a href="{{route('showprodutos', ['id' => $produto->id])}}" class="btn btn-sm btn-danger rounded"><span class="material-icons" class="text-danger">delete_sweep</span></a>
+                          <td class="text-center">{{$produto->PRO_NOME}}</td>
+                          <td class="text-center">{{$produto->PRO_DESCRICAO}}</td>
+                          <td class="text-center">{{$fornecedor->FOR_NOME}}</td>
+                          <td class="text-center">{{$produto->PRO_PRECOCOMPRA}}</td>
+                          <td class="text-center">{{$produto->PRO_PRECOVENDA}}</td>
+                          <td class="text-center">{{$produto->PRO_STATUS}}</td>
+                          <td class="text-center">{{$produto->PRO_QUANTIDADE}}</td>
+                          <td class="text-center"> <a href="{{route('edit-produto', ['id' => $produto->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a>
+                          <form action="{{route('produtos.destroy', [$produto->id])}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger rounded"><span class="material-icons" class="text-danger">delete_sweep</span>
+                          </form>
                           </td>
                         </tr>
                       </tbody>
+                      @endif
+                      @endforeach
                       @endforeach
                     </table>
                   </div>

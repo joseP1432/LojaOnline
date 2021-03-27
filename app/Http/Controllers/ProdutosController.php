@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Fornecedor;
+use App\Models\Produto;
 
 class ProdutosController extends Controller
 {
 
    	public function produtos(){
-		$pro = \App\Models\Produto::get();
-	
-		return view('produto', compact('pro'));
+		$pro = Produto::all();
+		$for = Fornecedor::all();
+		return view('produto')->with('pro', $pro)->with('for', $for);
 	}
 
 	public function cadproduto(){
-		return view('cad-produto');
+		$for = Fornecedor::all();
+		return view('cad-produto')->with('for', $for);
 	}
 
 	public function storeproduto(Request $request){
@@ -22,11 +25,12 @@ class ProdutosController extends Controller
 			'PRO_NOME' => $request->nome,
 			'PRO_DESCRICAO' => $request->desc,
 			'PRO_PRECOCOMPRA' => $request->pcompra,
+			'PRO_STATUS' => $request->status,
 			'PRO_PRECOVENDA' => $request->pvenda,
 			'PRO_QUANTIDADE' => $request->qntd,
 			'PRO_FOR_CODIGO' => $request->for,
 		]);
-		return view('cad-produto');
+		return redirect()->route('cad-produto');
 	}
 
 	public function showprodutos($id){
@@ -37,7 +41,8 @@ class ProdutosController extends Controller
 
 	public function editproduto($id) {
 		$produto = \App\Models\Produto::findOrFail($id);
-		return view('edit-produto', ['produtos' => $produto]);
+		$fornecedor = Fornecedor::all();
+		return view('edit-produto', ['produtos' => $produto])->with('fornecedor', $fornecedor);
 	}
 
 	public function atualizar(Request $request, $id)
@@ -50,6 +55,7 @@ class ProdutosController extends Controller
 			'PRO_PRECOVENDA'=> $request->pvenda,
 			'PRO_QUANTIDADE'=> $request->qntd,
 			'PRO_FOR_CODIGO' => $request->for,
+			'PRO_STATUS' => $request->status,
 		]);
 		return redirect()->route('produto');
 	}
