@@ -11,9 +11,9 @@ use App\Providers\RouteServiceProvider;
 class VendasController extends Controller
 {
 
-    public function __construct() {
-        $this->middleware(['auth']);
-    }
+	public function __construct() {
+		$this->middleware(['auth']);
+	}
 
 	public function vendas(){
 		$vendas = Venda::all();
@@ -33,6 +33,10 @@ class VendasController extends Controller
 			'VEN_STATUS' => $request->status,
 			'VEN_DATA' => $request->data,
 			'VEN_PRO_CODIGO' => $request->prod,
+		]);
+		$produto = \App\Models\Produto::findOrFail($request->prod);
+		$produto->update([
+			'PRO_QUANTIDADE'=> $produto->PRO_QUANTIDADE- $request->qntd,
 		]);
 		return redirect()->route('cad-venda');
 	}
@@ -62,7 +66,7 @@ class VendasController extends Controller
 		return redirect()->route('venda');
 	}
 
-		public function destroy($id){
+	public function destroy($id){
 		$venda = \App\Models\Venda::findOrFail($id);
 		$venda->delete();
 		return redirect()->route('venda');

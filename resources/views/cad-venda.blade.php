@@ -108,19 +108,19 @@
                   <div class="col-md-2">
                     <div class="form-group">
                       <label class="bmd-label-floating">Quantidade</label>
-                      <input  class="form-control" type="text" name="qntd" id="qntd" value="{{@$ven->VEN_QUANTIDADE}}">
+                      <input  class="form-control" type="number" name="qntd" id="qntd" value="{{@$ven->VEN_QUANTIDADE}}" placeholder="EX.: 5">
                     </div>
                   </div>
                   <div class="col-md-2">
                     <div class="form-group">
                       <label class="bmd-label-floating">Data</label>
-                      <input  class="form-control" type="date" name="data" id="data" value="{{@$ven->VEN_DATA}}">
+                      <input  class="form-control" type="date" name="data" id="data" value="{{@$ven->VEN_DATA}}" placeholder="EX.: 25/03/2021">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">Cliente</label>
-                      <input  class="form-control" type="text" name="cliente" id="cliente" value="{{@$ven->VEN_CLIENTE}}">
+                      <input  class="form-control" type="text" name="cliente" id="cliente" value="{{@$ven->VEN_CLIENTE}}" placeholder="EX.: Vicente">
                     </div>
                   </div>
                 </div>

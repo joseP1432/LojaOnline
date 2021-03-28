@@ -25,6 +25,9 @@ class VendaFactory extends Factory
         return [
             'VEN_QUANTIDADE' => $this->faker->realText(10),
             'VEN_PRO_CODIGO' => Produto::inRandomOrder()->first()->id,
+            'VEN_CLIENTE' => $this->faker->realText(10),
+            'VEN_DATA' => '25/02/2021'
+            'VEN_STATUS' => $this->faker->realText(15),
             //
         ];
     }

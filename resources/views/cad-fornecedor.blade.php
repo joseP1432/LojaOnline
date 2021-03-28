@@ -96,7 +96,7 @@
 											<div class="col-md-4">
 												<div class="form-group">
 													<label class="bmd-label-floating">Nome do fornecedor</label>
-													<input  class="form-control" type="text" name="nome" id="nome" value="{{@$for->FOR_NOME}}">
+													<input  class="form-control" type="text" name="nome" id="nome" value="{{@$for->FOR_NOME}}" placeholder="EX.: Pentel">
 												</div>
 											</div> 
 											<button type="submit" class="btn btn-primary pull-right">Salvar</button>

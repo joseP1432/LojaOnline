@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="bmd-label-floating">Nome</label>
-                        <input class="form-control" type="text" name="nome" id="nome" value="{{@$pro->PRO_NOME}}">
+                        <input class="form-control" type="text" name="nome" id="nome" value="{{@$pro->PRO_NOME}}" placeholder="EX.:Lápis hidrocor">
                       </div>
                     </div>
 
@@ -117,13 +117,13 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Preço de Compra</label>
-                        <input class="form-control"  type="text" name="pcompra" id="pcompra" value="{{@$pro->PRO_PRECOCOMPRA}}">
+                        <input class="form-control"  type="text" name="pcompra" id="pcompra" value="{{@$pro->PRO_PRECOCOMPRA}}" placeholder="EX.: 5.00">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Preço de Venda</label>
-                        <input class="form-control" type="text" name="pvenda" id="pvenda" value="{{@$pro->PRO_PRECOVENDA}}" >
+                        <input class="form-control" type="text" name="pvenda" id="pvenda" value="{{@$pro->PRO_PRECOVENDA}}" placeholder="EX.: 10.00" >
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -134,6 +134,7 @@
                           <option value="Bombando">Bombando</option>
                           <option value="Fraco">Fraco</option>
                           <option value="Estável">Estável</option>
+                          <option value="Estável">Aquardando resultado</option>
                         </select>
                       </div>
                     </div>
@@ -142,13 +143,13 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Quantidade</label>
-                        <input  class="form-control" type="text" name="qntd" id="qntd" value="{{@$pro->PRO_QUANTIDADE}}">
+                        <input  class="form-control" type="text" name="qntd" id="qntd" value="{{@$pro->PRO_QUANTIDADE}}" placeholder="EX.: 10">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label class="bmd-label-floating">Descrição</label>
-                        <input class="form-control" type="text" name="desc" id="desc" value="{{@$pro->PRO_DESCRICAO}}">
+                        <input class="form-control" type="text" name="desc" id="desc" value="{{@$pro->PRO_DESCRICAO}}" placeholder="EX.: Aprova d'aqua e com cheirinho">
                       </div>
                     </div>
                     <div class="col-md-4 mt-4">

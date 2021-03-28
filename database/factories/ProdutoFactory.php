@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Produto;
+use App\Models\Fornecedor;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ProdutoFactory extends Factory
@@ -27,7 +28,7 @@ class ProdutoFactory extends Factory
             'PRO_PRECOCOMPRA' => 8,
             'PRO_PRECOVENDA' => 16,
             'PRO_QUANTIDADE' => 5,
-            'PRO_FOR_CODIGO' => 1,
+            'PRO_FOR_CODIGO' => Fornecedor::inRandomOrder()->first()->id,
 
         ];
     }

@@ -108,7 +108,7 @@
                     <tbody>
                       <tr>
                         <td class="text-center">
-                         {{$fornecedor->FOR_NOME}}
+                         <h4 class="text-bold">{{$fornecedor->FOR_NOME}}</h4>
                        </td>
                        <td class="text-center">
                         <a href="{{route('edit-fornecedor', ['id' => $fornecedor->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a>

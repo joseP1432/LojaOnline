@@ -134,65 +134,71 @@
                           <td class="text-center">{{$produto->PRO_PRECOCOMPRA}}</td>
                           <td class="text-center">{{$produto->PRO_PRECOVENDA}}</td>
                           <td class="text-center">{{$produto->PRO_STATUS}}</td>
-                          <td class="text-center">{{$produto->PRO_QUANTIDADE}}</td>
-                          <td class="text-center"> <a href="{{route('edit-produto', ['id' => $produto->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a>
-                          <form action="{{route('produtos.destroy', [$produto->id])}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger rounded"><span class="material-icons" class="text-danger">delete_sweep</span>
-                          </form>
+                          <td class="text-center">
+                            @if ($produto->PRO_QUANTIDADE>= 0)
+                            {{$produto->PRO_QUANTIDADE}}
+                            @elseif ( $produto->PRO_QUANTIDADE < 0)
+                            Foram encomendados {{$produto->PRO_QUANTIDADE*(-1)}}  {{$produto->PRO_NOME}}
+                            @endif
                           </td>
-                        </tr>
-                      </tbody>
-                      @endif
-                      @endforeach
-                      @endforeach
-                    </table>
+                          <td class="text-center"> <a href="{{route('edit-produto', ['id' => $produto->id])}}" class="btn btn-primary btn-sm rounded"><span class="material-icons">create</span></a>
+                            <form action="{{route('produtos.destroy', [$produto->id])}}" method="POST">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-sm btn-danger rounded"><span class="material-icons" class="text-danger">delete_sweep</span>
+                              </form>
+                            </td>
+                          </tr>
+                        </tbody>
+                        @endif
+                        @endforeach
+                        @endforeach
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>    <footer class="footer">
-        <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="#">
-                  Loja Online
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div class="copyright float-right">
-            &copy;
-            <script>
-              document.write(new Date().getFullYear())
-            </script>, Criado por <i class="material-icons">favorite</i> 
-            <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
+        </div>    <footer class="footer">
+          <div class="container-fluid">
+            <nav class="float-left">
+              <ul>
+                <li>
+                  <a href="#">
+                    Loja Online
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <div class="copyright float-right">
+              &copy;
+              <script>
+                document.write(new Date().getFullYear())
+              </script>, Criado por <i class="material-icons">favorite</i> 
+              <a href="#">Informatica 1M</a> Amanda, Daniel, José Pereira e Ketlly.
+            </div>
+            <!-- your footer here -->
           </div>
-          <!-- your footer here -->
-        </div>
-      </footer>
+        </footer>
+      </div>
     </div>
-  </div>
 
-  <!--   Core JS Files   -->
-  <script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!-- Forms Validations Plugin -->
-  <script src="../assets/js/plugins/jquery.validate.min.js"></script>
-  <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
-  <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
-  <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="../assets/js/plugins/nouislider.min.js"></script>
-  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
-</body>
+    <!--   Core JS Files   -->
+    <script src="../assets/js/core/jquery.min.js"></script>
+    <script src="../assets/js/core/popper.min.js"></script>
+    <script src="../assets/js/core/bootstrap-material-design.min.js"></script>
+    <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Forms Validations Plugin -->
+    <script src="../assets/js/plugins/jquery.validate.min.js"></script>
+    <!-- Plugin for the Wizard, full documentation here: https://github.com/VinceG/twitter-bootstrap-wizard -->
+    <script src="../assets/js/plugins/jquery.bootstrap-wizard.js"></script>
+    <!--  Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="../assets/js/plugins/bootstrap-selectpicker.js"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="../assets/js/plugins/nouislider.min.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  </body>
 
-</html>
+  </html>
